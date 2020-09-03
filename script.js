@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $('button').click(function() {
     var input = $('input:text').val();
-
+    reset();
     console.log(input);
 
     $.ajax({
@@ -46,11 +46,13 @@ $(document).ready(function() {
       }
     };
 
-  //function reset(){
-  //$('.film').empty();
-  //$('button').val('');
-//}
+
 
 
   });
 });
+
+  function reset(){
+    $('.film').empty();
+    $('button').val('');
+  }
