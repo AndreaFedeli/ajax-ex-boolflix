@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   $('button').click(function() {
     var input = $('input:text').val();
+
     console.log(input);
 
     $.ajax({
@@ -11,7 +12,7 @@ $(document).ready(function() {
       method: 'GET',
       data: {
         api_key: 'c830462730db14d8b93291f626fbdf9e',
-        query: 'input',
+        query: input,
         language: 'it-IT',
       },
       success: function(data) {
@@ -27,23 +28,29 @@ $(document).ready(function() {
     //funzione per l inserimento dei dati ricavati da API
 
     function printMovie(movie) {
-      var source = $("#entry-template").html();
-      var template = Handlebars.compile(source);
+
       for (var i = 0; i < movie.length; i++) {
-        var thisMovie = movie;
-        console.log(thisMovie);
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+        console.log(movie);
 
 
         var context = {
-          title: thisMovie.title,
-          original_title: thisMovie.original_title,
-          original_language: thisMovie.original_language,
-          vote_average: thisMovie.vote_average
+          title: movie[i].title,
+          original_title: movie[i].original_title,
+          original_language: movie[i].original_language,
+          vote_average: movie[i].vote_average
         };
         var html = template(context);
         $('.movie-container').append(html);
       }
-
     };
+
+  //function reset(){
+  //$('.film').empty();
+  //$('button').val('');
+//}
+
+
   });
 });
