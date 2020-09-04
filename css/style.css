@@ -4,8 +4,37 @@
     box-sizing: border-box;
 }
 
+header{
+  background-color: black;
+  width: 100%;
+  height: 250px;
+
+}
+
+.titolo{
+  width:200px;
+  height: 50px;
+}
+
+
+h1{
+  color: red;
+
+}
+
+img{
+  margin-left: 30%;
+  ;
+}
+
+input{
+  margin-top: 20px;
+
+}
+
+
 body {
-    background-color: skyblue;
+    background-color: darkgrey;
     color: blue;
 }
 
@@ -13,12 +42,30 @@ body {
 
 h2 {
     color: blue;
+    margin-top: 50px;
 }
 
-ul {
-    list-style: none;
-    margin: 20px 0;
+.container-film{
+
+	height: 50%;
+	display: flex;
+	flex-flow: row;
+	flex-wrap: no-wrap;
+  margin-top: 50px;
 }
+
+.container-tv{
+	height: 50%;
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+  margin-top: 50px;
+}
+
 .flag{
   width: 30px;
+}
+
+ul{
+  padding-left: 40px;
 }
