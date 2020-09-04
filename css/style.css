@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: skyblue;
+    color: blue;
+}
+
+
+
+h2 {
+    color: blue;
+}
+
+ul {
+    list-style: none;
+    margin: 20px 0;
+}
+.flag{
+  width: 30px;
+}

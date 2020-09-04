@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>Boolflix</title>
-  </head>
-  <body>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
 
+<body>
 
+  <div class="search-bar">
+    <input type="text" placeholder="Inizia la tua ricerca">
+    <button>Search</button>
+  </div>
 
-    <input type="text" name="" value="">
-    <button type="button" name="button">Search</button>
-    <div class="movie-container"></div>
+  <h2>Film</h2>
+  <div class="container-film"> </div>
 
-    <script id="entry-template" type="text/x-handlebars-template">
-          <div class="film">
-            <ul>
-              <li class="title">{{title}}</li>
-              <li class="original_title">{{original_title}}</li>
-              <li class="original_language">{{original_language}}</li>
-              <li class="vote_average">{{vote_average}}</li>
+  <h2>Tv</h2>
+  <div class="container-tv"> </div>
 
-            </ul>
-          </div>
-        </script>
+  <script id="entry-template" type="text/x-handlebars-template">
+    <ul class="lista">
+      <img src="{{poster}}" alt="">
+      <li class="tipo">{{tipo}}</li>
+      <li class="title">{{title}}</li>
+      <li class="original_title">{{original_title}}</li>
+      <li class="original_language">{{{original_language}}}</li>
+      <li class="vote_average">{{{vote_average}}}</li>
+    </ul>
+  </script>
 
-    <script src="script.js" charset="utf-8"></script>
-  </body>
+  <script id="no-result-template" type="text/x-handlebars-template">
+    <div>{{noResult}}</div>
+  </script>
+
+  <script src="js\script.js" charset="utf-8"></script>
+
+</body>
+
 </html>
