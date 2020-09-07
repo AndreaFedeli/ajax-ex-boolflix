@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Noto+Sans+TC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Noto+Sans+TC&family=Yanone+Kaffeesatz:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
@@ -14,11 +17,11 @@
 
 <header>
   <div class="titolo">
-    <h1>BOOLFLIX</h1>
-    <h2>WELCOME TO THE MOVIEMENT</h2>
+    <h1 class="web">BOOLFLIX</h1>
+    <h2 class="slogan">WELCOME TO THE MOVIEMENT</h2>
   </div>
 
-  <img src="img/logo.png" alt="" width="700px" height="200px">
+  <img src="img/logo.png" class= "logo" alt="" width="700px" height="200px">
 
   </header>
 
@@ -29,20 +32,22 @@
     </div>
 
 
-  <h2>Film</h2>
-  <div class="container-film"> </div>
+  <h2 class="film">Film</h2>
+  <div class ="container-film"> </div>
 
-  <h2>Tv</h2>
+  <h2 class="tv">Tv</h2>
   <div class="container-tv"> </div>
 
   <script id="entry-template" type="text/x-handlebars-template">
     <ul class="lista">
-      <img src="{{poster}}" alt="">
+      <li class ="poster-img">{{{poster}}}</li>
       <li class="tipo">{{tipo}}</li>
       <li class="title">{{title}}</li>
       <li class="original_title">{{original_title}}</li>
       <li class="original_language">{{{original_language}}}</li>
       <li class="vote_average">{{{vote_average}}}</li>
+      <li class="overview">{{overview}}</li>
+
     </ul>
   </script>
 

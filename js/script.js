@@ -1,34 +1,52 @@
 $(document).ready(function(){
 
   $('button').click(function(){
-    var queryInput = $('input:text').val();
-    reset();
-    insertFilm(queryInput);
-    insertTv(queryInput);
+    init();
+  });
+
+
+  $('input:text').keydown(function(){
+    if (event.which == 13 || event.keyCode == 13){
+      init();
+    }
   });
 
 
 });
 
+function init(){
+  var queryInput = $('input:text').val();
+  reset();
+  var url1 = 'https://api.themoviedb.org/3/search/movie';
+  var url2 = 'https://api.themoviedb.org/3/search/tv';
 
+  chiamata(queryInput,url1,'Film');
+  chiamata(queryInput,url2,'Tv');
+}
 
-function insertFilm(data){
+function reset(){
+  $('.container-film').empty();
+  $('.container-tv').empty();
+  $('input:text').val('');
+}
+
+function chiamata(data,url,type){
   $.ajax(
     {
-      url: 'https://api.themoviedb.org/3/search/movie',
+      url: url,
       method: 'GET',
       data:
       {
-        api_key: '2c42a4436c6db0bbb4e23ee64ca1bc93',
+        api_key: 'c830462730db14d8b93291f626fbdf9e',
         query: data,
         language: 'it-IT'
       },
       success: function(risposta){
         if(risposta.total_results > 0){
-          printResult(risposta.results,'Film');
+          printResult(risposta.results,type);
 
         } else {
-          noResult('Film');
+          noResult(type);
         }
 
       },
@@ -39,33 +57,6 @@ function insertFilm(data){
   );
 }
 
-
-function insertTv(data){
-  $.ajax(
-    {
-      url: 'https://api.themoviedb.org/3/search/tv',
-      method: 'GET',
-      data:
-      {
-        api_key: '2c42a4436c6db0bbb4e23ee64ca1bc93',
-        query: data,
-        language: 'it-IT'
-      },
-      success: function(risposta){
-        if(risposta.total_results > 0){
-          printResult(risposta.results,'Tv');
-
-        } else {
-          noResult('Tv');
-        }
-
-      },
-      error: function(){
-        alert('Errore');
-      }
-    }
-  );
-}
 
 function printResult(data,type){
   var source = $("#entry-template").html();
@@ -86,7 +77,10 @@ function printResult(data,type){
       titolo: title,
       original_title: original_title,
       original_language: flag(data[i].original_language),
-      vote_average: stars(data[i].vote_average)
+      vote_average: stars(data[i].vote_average),
+      poster: insertPoster(data[i].poster_path,title),
+      overview: data[i].overview.substring(0,200)+' [...]'
+
     };
     var html = template(context);
     if(type == 'Film'){
@@ -98,7 +92,16 @@ function printResult(data,type){
   }
 }
 
+function insertPoster(poster,titolo){
+  var urlBase = 'https://image.tmdb.org/t/p/w185';
+  var percorso = urlBase + poster;
+  poster_image = '<img src="'+percorso+'" class="poster" alt="'+titolo+'">';
+  if (poster == null){
+    poster_image = '<img src="img/default-poster.png" class="poster" alt="'+titolo+'">';
+  }
 
+  return poster_image;
+}
 
 function flag (lingua){
   var language = ['en', 'it'];
@@ -125,7 +128,6 @@ function stars(num){
   return star;
 }
 
-
 function noResult(type){
   var source = $("#no-result-template").html();
   var template = Handlebars.compile(source);
@@ -139,10 +141,4 @@ function noResult(type){
     $('.container-tv').append(html);
   }
 
-}
-
-function reset(){
-  $('.container-film').empty();
-  $('.container-tv').empty();
-  $('input:text').val('');
 }

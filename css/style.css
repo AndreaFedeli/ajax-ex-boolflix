@@ -17,14 +17,24 @@ header{
 }
 
 
+
 h1{
   color: red;
 
 }
 
-img{
+h1.web{
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+h2.slogan{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: blue;
+  font-size: 30px;
+}
+
+img.logo{
   margin-left: 30%;
-  ;
 }
 
 input{
@@ -34,31 +44,34 @@ input{
 
 
 body {
-    background-color: darkgrey;
-    color: blue;
+ background: linear-gradient(to top left, #ff0000 0%, #000099 100%);
 }
-
 
 
 h2 {
-    color: blue;
-    margin-top: 50px;
+  color: white;
+  margin-top: 50px;
+
 }
 
-.container-film{
+h2.film {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
 
-	height: 50%;
-	display: flex;
-	flex-flow: row;
-	flex-wrap: no-wrap;
+}
+
+
+h2.tv {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+
+
+}
+.container-film{
   margin-top: 50px;
 }
 
 .container-tv{
-	height: 50%;
-	display: flex;
-	flex-flow: row;
-	flex-wrap: wrap;
   margin-top: 50px;
 }
 
@@ -66,6 +79,14 @@ h2 {
   width: 30px;
 }
 
+
 ul{
-  padding-left: 40px;
+  padding-left: 20px;
+  margin-top: 30px;
+  color: white;
+}
+
+li{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
 }
